@@ -21,6 +21,19 @@ class MessageService {
     });
     await newMessage.save();
   }
+
+  async deleteMessage(userID: Types.ObjectId, messageID: string): Promise<void> {
+    const message = await Message.findById(messageID);
+    if (!message) {
+      throw new Error('Message not found');
+    }
+
+    if (!message.senderID.equals(userID)) {
+      throw new Error('You are not authorized to delete this message');
+    }
+
+    await Message.findByIdAndDelete(messageID);
+  }
 }
 
 export default new MessageService();
