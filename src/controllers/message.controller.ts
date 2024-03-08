@@ -14,6 +14,17 @@ class MessageController {
       return next(error);
     }
   }
+
+  async deleteMessage(req: Request, res: Response, next: NextFunction) {
+    try {
+      const { id: messageID } = req.params;
+      const { id: userID } = req.currentUser;
+      await messageService.deleteMessageByID(userID, messageID);
+      res.status(200).send(HelperService.formatResponse("success", {}));
+    } catch (error) {
+      return next(error);
+    }
+  }
 }
 
-export default new MessageController()
+export default new MessageController();

@@ -28,3 +28,5 @@ app.httpServer.on("error", (error: any) => {
       throw error;
   }
 });
+
+export default app.express;

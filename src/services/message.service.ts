@@ -22,7 +22,7 @@ class MessageService {
     await newMessage.save();
   }
 
-  async deleteMessage(userID: Types.ObjectId, messageID: string): Promise<void> {
+  async deleteMessageByID(userID: Types.ObjectId, messageID: string): Promise<void> {
     const message = await Message.findById(messageID);
     if (!message) {
       throw new Error('Message not found');
