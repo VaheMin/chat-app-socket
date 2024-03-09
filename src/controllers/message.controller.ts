@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from "express";
+import { respStatus } from "../enums/response.enum";
 import { HelperService } from "../services/helper.service";
 import messageService from "../services/message.service";
 
@@ -9,7 +10,7 @@ class MessageController {
       const data = await messageService.getMessagesByRoomID(id);
       res
         .status(200)
-        .send(HelperService.formatResponse("succss", { messages: data }));
+        .send(HelperService.formatResponse(respStatus.SUCCESS, { messages: data }));
     } catch (error) {
       return next(error);
     }
@@ -20,7 +21,7 @@ class MessageController {
       const { id: messageID } = req.params;
       const { id: userID } = req.currentUser;
       await messageService.deleteMessageByID(userID, messageID);
-      res.status(200).send(HelperService.formatResponse("success", {}));
+      res.status(200).send(HelperService.formatResponse(respStatus.SUCCESS, {}));
     } catch (error) {
       return next(error);
     }

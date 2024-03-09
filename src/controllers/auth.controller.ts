@@ -1,5 +1,6 @@
 import { Request, Response,  NextFunction } from "express";
 import { Namespace } from "socket.io";
+import { respStatus } from "../enums/response.enum";
 import authService from '../services/auth.service';
 import { HelperService } from "../services/helper.service";
 
@@ -8,7 +9,7 @@ class AuthController{
         try{
             const {name, password} = req.body;
             const data = await authService.auth(name, password);
-            res.status(200).send(HelperService.formatResponse('success', {token: data}));
+            res.status(200).send(HelperService.formatResponse(respStatus.SUCCESS, {token: data}));
         } catch(error){
             next(error);
         }

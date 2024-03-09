@@ -1,9 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
+import { respStatus } from '../enums/response.enum';
 import { HelperService } from './helper.service';
 
 class ErrorHandler {
   notFound(req: Request, res: Response, next: NextFunction) {
-    res.status(404).send(HelperService.formatResponse("failed", { error: 'Not found', type: 'NotFound' }));
+    res.status(404).send(HelperService.formatResponse(respStatus.FAILED, { error: 'Not found', type: 'NotFound' }));
   }
 
   internalServerError(err: any, req: Request, res: Response, next: NextFunction) {
@@ -15,7 +16,7 @@ class ErrorHandler {
     }
 
     return res.status(400).send(
-      HelperService.formatResponse('failed', {
+      HelperService.formatResponse(respStatus.FAILED, {
         error: err.message,
       }),
     );
