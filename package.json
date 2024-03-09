@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ts-node-dev src/index.ts",
     "seed": "ts-node-dev src/db/seed/index.ts",
-    "test": "jest test/index.test.ts"
+    "test": "jest test/index.test.ts --forceExit"
   },
   "author": "Aram Manukyan",
   "license": "ISC",

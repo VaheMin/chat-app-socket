@@ -3,7 +3,7 @@ import request from 'supertest';
 import app from '../src/index';
 
 const mainUrl = '/api/v1';
-let token: string; //
+let token: string; 
 
 const userName = 'John';
 const userPassword = '12345678';
