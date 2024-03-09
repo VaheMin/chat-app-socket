@@ -40,6 +40,8 @@ To set up and run the application, follow these steps:
     ```
 
     This will start the server on port 3001 by default. You can modify the port configuration in the `.env` file if needed.
+    
+    **Note:** No need to have MongoDB installed as the application connects to the Atlas cloud.
 
 ## Usage
 
@@ -63,7 +65,7 @@ The collection contains the following requests:
 
 - **Login**: Sends a POST request to `localhost:3001/api/v1/users/login` to authenticate a user. 
 
-    You can use one of the seeded users' credentials, for example:
+    You can use one of the seeded user's credentials, for example:
     ```json
     {
         "name": "John",
