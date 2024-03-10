@@ -116,6 +116,8 @@ You can test the endpoints using Jest tests. Simply run the command:
 npm test
 ```
 
+Also test are working automaticaly when pushing code to branch
+
 ### Chatting via WebSocket Service
 
 For real-time chatting, you can connect to the WebSocket service. Unfortunately, it's not possible to export the WebSocket collection from Postman, so I've shared it via URL: https://go.postman.co/workspace/meetQ~25f0d120-4eb5-4fbe-aa07-fdbedccaf761/collection/65eb6757fd7b469b2c424bc4
