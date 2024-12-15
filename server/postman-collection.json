@@ -1,0 +1,103 @@
+{
+	"info": {
+		"_postman_id": "e62a0c8b-f5f7-4415-83f4-94362ed328a8",
+		"name": "Chat app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5137304"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"name\": \"John\",\n\"password\": \"12345678\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3033/api/v1/users/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3033",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get messages",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTk5MzY5ZWRiYmU4MjBiNzAyNWQ0OSIsIm5hbWUiOiJKb2huIiwiaWF0IjoxNzA5ODQyNDQzfQ.zPLhmNqzjoRO1fdSS0OPNjTDPqLV2yA-_sDvXZi5Z6I",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3033/api/v1/rooms/65b61d7a8db4edc72edb9362/messages",
+					"host": [
+						"localhost"
+					],
+					"port": "3033",
+					"path": [
+						"api",
+						"v1",
+						"rooms",
+						"65b61d7a8db4edc72edb9362",
+						"messages"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete message",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTk5MzY5ZWRiYmU4MjBiNzAyNWQ0OSIsIm5hbWUiOiJKb2huIiwiaWF0IjoxNzA5ODQyNDQzfQ.zPLhmNqzjoRO1fdSS0OPNjTDPqLV2yA-_sDvXZi5Z6I",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3033/api/v1/messages/65ea36b670395ea5450da0f6",
+					"host": [
+						"localhost"
+					],
+					"port": "3033",
+					"path": [
+						"api",
+						"v1",
+						"messages",
+						"65ea36b670395ea5450da0f6"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
