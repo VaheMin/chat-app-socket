@@ -4,6 +4,8 @@ import { auth } from "../../middlewares/auth.middleware";
 
 const router = Router();
 
-router.get("/:id/messages", auth, messageController.getMessagesByRoomID);
+router.get('/:id/messages', auth, messageController.getMessagesByRoomID);
+router.get('/create-new-room', messageController.createRoom);
+
 
 export default router;

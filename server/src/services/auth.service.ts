@@ -31,6 +31,25 @@ class AuthService {
     const token = this.generateJWT(user._id, user.name);
     return token;
   }
+
+  async reg(name: string, password: string): Promise<String> {
+    const user = await User.findOne({ name });
+
+    if (user) {
+      throw new Error('User already exist');
+    }
+
+     try {
+       const newUser = new User({name, password});
+       await newUser.save();
+       console.log(`User ${user.name} saved successfully.`);
+     } catch (error) {
+       console.error(`Error saving user ${user.name}:`, error);
+     }
+
+    const token = this.generateJWT(user._id, user.name);
+    return token;
+  }
 }
 
 export default new AuthService();

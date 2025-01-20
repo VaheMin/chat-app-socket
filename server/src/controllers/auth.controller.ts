@@ -15,6 +15,16 @@ class AuthController {
       next(error);
     }
   }
+  async registration(req: Request, res: Response, next: NextFunction) {
+    try {
+      const { name, password } = req.body;
+      const data = await authService.reg(name, password);
+      res.status(200).send(HelperService.formatResponse(respStatus.SUCCESS, { token: data, name: name }));
+    } catch (error) {
+      console.log(error);
+      next(error);
+    }
+  }
 }
 
 export default new AuthController();

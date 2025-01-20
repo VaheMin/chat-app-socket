@@ -2,6 +2,8 @@ import { Types } from 'mongoose';
 import { IMessage } from '../interfaces/message.interface';
 import Message from '../models/message.model';
 import User from '../models/user.model';
+import Room from '../models/room.model';
+import { IRoom } from '../interfaces/room.interface';
 
 class MessageService {
   async getMessagesByRoomID(rooomID: string): Promise<Array<IMessage>> {
@@ -31,6 +33,22 @@ class MessageService {
     }
 
     await Message.findByIdAndDelete(messageID);
+  }
+
+  async createNewRoom(roomName: string): Promise<IRoom | null> {
+    const room = await Room.findOne({ name: roomName });
+    if (room) {
+      throw new Error(`Room with ${roomName} name already exists`);
+    }
+    try {
+      const newRoom = new Room({ name: roomName });
+      newRoom.save();
+      console.log(`Room with ${roomName} name successfully created`);
+      return newRoom;
+    } catch {
+      console.log(`Something went wrong`);
+      return null;
+    }
   }
 }
 
