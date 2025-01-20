@@ -40,14 +40,15 @@ class AuthService {
     }
 
      try {
-       const newUser = new User({name, password});
+       const newUser = new User({ name, password });
        await newUser.save();
-       console.log(`User ${user.name} saved successfully.`);
+       console.log(`User ${newUser.name} saved successfully.`);
      } catch (error) {
        console.error(`Error saving user ${user.name}:`, error);
      }
 
-    const token = this.generateJWT(user._id, user.name);
+     const newUser = await User.findOne({ name });
+     const token = this.generateJWT(newUser._id, newUser.name);
     return token;
   }
 }
